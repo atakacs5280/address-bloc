@@ -16,6 +16,26 @@ require_relative '../models/address_book'
      book = AddressBook.new
      expect(book.entries.size).to eq(0)
    end
+
+   describe "#remove_entry" do
+     it "removes an entry using, name, phone_number, and email_address" do
+       book = AddressBook.new
+       book.add_entry('Alex Takacs', '010.012.1815', 'Alexander.g.Takacs@gmail.com')
+
+
+       name = 'Ada lovelace'
+       phone_number = '010.012.1815'
+       email_address = 'augusta.king@lovelace.com'
+       book.add_entry(name,phone_number,email_address)
+
+       expect(book.entry.size).to_eq 2
+       book.remove_entry(name,phone_number,email_address)
+       expect(book.entry.size).to_eq 1
+       expect(book.entry.first.name).to_eq ("Alex Takacs")
+     end
+   end
+
+   end
    describe "#add_entry" do
      it "adds only one entry to the address book" do
        book = AddressBook.new
@@ -32,7 +52,7 @@ require_relative '../models/address_book'
        expect(new_entry.name).to eq('Ada Lovelace')
        expect(new_entry.phone_number).to eq('010.012.1815')
        expect(new_entry.email).to eq('augusta.king@lovelace.com')
-     end
+
    end
   end
 end
