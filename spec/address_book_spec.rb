@@ -20,7 +20,7 @@ require_relative '../models/address_book'
    describe "#remove_entry" do
      it "removes an entry using, name, phone_number, and email_address" do
        book = AddressBook.new
-       book.add_entry('Alex Takacs', '010.012.1815', 'Alexander.g.Takacs@gmail.com')
+       book.add_entry('Alex Takacs', '303.868.1245', 'Alexander.g.Takacs@gmail.com')
 
 
        name = 'Ada lovelace'
