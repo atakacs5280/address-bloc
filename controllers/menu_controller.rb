@@ -40,16 +40,36 @@
        read_csv
        main_menu
      when 5
+       system "clear"
+       entry_n_submenu
+       main_menu
+       puts
+     when 6
        puts "Good-bye!"
- # #8
-       exit(0)
- # #9
+        exit(0)
      else
        system "clear"
-       puts "Sorry, that is not a valid input"
+       puts "Sorry, that is not a valid entry!"
        main_menu
      end
    end
+ # #8
+
+ def entry_n_submenu
+   print "Which entry number would you like to see?"
+   entry = gets.chomp.to_i
+
+ if entry < @address_book.entries.count
+   puts @address_book.entries[entry]
+   puts "Press enter for main menu"
+   gets.chomp
+   system "clear"
+ else
+   system "clear"
+end
+end
+
+
 
  # #10
    def view_all_entries
