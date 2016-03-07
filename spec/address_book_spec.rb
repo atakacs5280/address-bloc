@@ -27,20 +27,20 @@ def check_entry(entry, expected_name, expected_number, expected_email)
  end
 
    describe "#remove_entry" do
-     it "removes an entry using, name, phone_number, and email_address" do
-       book = AddressBook.new
+     it "removes an entry using, name, phone_number, email" do
+
        book.add_entry('Alex Takacs', '303.868.1245', 'Alexander.g.Takacs@gmail.com')
 
 
-       name = 'Ada lovelace'
-       phone_number = '010.012.1815'
-       email_address = 'augusta.king@lovelace.com'
-       book.add_entry(name,phone_number,email_address)
+       name = 'Alex Takacs'
+       phone_number = '303.868.1245'
+       email = 'Alexander.g.takacs@gmail.com'
+       book.add_entry(name,phone_number,email)
 
-       expect(book.entry.size).to_eq 2
-       book.remove_entry(name,phone_number,email_address)
-       expect(book.entry.size).to_eq 1
-       expect(book.entry.first.name).to_eq ("Alex Takacs")
+       expect(book.entries.size).to eq 2
+       book.remove_entry(name,phone_number,email)
+       expect(book.entries.size).to eq 1
+       expect(book.entries.first.name).to eq ("Alex Takacs")
      end
   end
 
@@ -64,60 +64,81 @@ def check_entry(entry, expected_name, expected_number, expected_email)
        expect(new_entry.phone_number).to eq('010.012.1815')
        expect(new_entry.email).to eq('augusta.king@lovelace.com')
 
-   end
+     end
 
-
+end
       describe "#import_from_csv" do
         it "imports the correct number of entries" do
           book.import_from_csv("entries.csv")
           book_size = book.entries.size
           expect(book_size).to eq 5
-    end
+        end
 
 
          it "imports the 1st entry" do
            book.import_from_csv("entries.csv")
            # Check the first entry
-           entry_one = book.entries[0]
-           check_entry(entry_one, "Bill", "555-555-4854", "bill@blocmail.com")
+            entry_one = book.entries[0]
+            check_entry(entry_one, "Bill", "555-555-4854", "bill@blocmail.com")
           end
 
            it "imports the 2nd entry" do
              book.import_from_csv("entries.csv")
   # Check the second entry
-          entry_two = book.entries[1]
-          check_entry(entry_two, "Bob", "555-555-5415", "bob@blocmail.com")
-        end
+              entry_two = book.entries[1]
+              check_entry(entry_two, "Bob", "555-555-5415", "bob@blocmail.com")
+          end
 
         it "imports the 3rd entry" do
           book.import_from_csv("entries.csv")
   # Check the third entry
-        entry_three = book.entries[2]
-        check_entry(entry_three, "Joe", "555-555-3660", "joe@blocmail.com")
-     end
+            entry_three = book.entries[2]
+            check_entry(entry_three, "Joe", "555-555-3660", "joe@blocmail.com")
+          end
 
 
       it "imports the 4th entry" do
         book.import_from_csv("entries.csv")
   # Check the fourth entry
-      entry_four = book.entries[3]
-      check_entry(entry_four, "Sally", "555-555-4646", "sally@blocmail.com")
-    end
+          entry_four = book.entries[3]
+          check_entry(entry_four, "Sally", "555-555-4646", "sally@blocmail.com")
+        end
 
     it "imports the 5th entry" do
       book.import_from_csv("entries.csv")
   # Check the fifth entry
-      entry_five = book.entries[4]
-      check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
+        entry_five = book.entries[4]
+        check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
+        end
+
+    end
+
+    describe "#importing from entries_2.csv" do
+      it "imports the correct number of entries" do
+        book.import_from_csv("entries_2.csv")
+        book_size = book.entries.size
+        expect(book.entires.size).to eq 3
       end
 
-    end
+        it "imports the 1st entry" do
+          book.import_from_csv("entries_2.csv")
+        # Check the first entry
+          entry_one = book.entries[0]
+          check_entry(entry_one, "Bill","555-555-4854","bill@blocmail.com")
+        end
 
-    describe "importing from entries_2.csv" do
-      it "imports number of entries"
-      book.import_from_csv("entries_2.csv")
-      expect(book_size).to eq 3
-    end
+        it "imports the 2nd entry" do
+          book.import_from_csv("entries_2.csv")
+# Check the second entry
+           entry_two = book.entries[1]
+           check_entry(entry_two, "Bob","555-555-5415","bob@blocmail.com")
+         end
 
-  end
+     it "imports the 3rd entry" do
+       book.import_from_csv("entries_2.csv")
+# Check the third entry
+         entry_three = book.entries[2]
+         check_entry(entry_three, "Joe","555-555-3660","joe@blocmail.com")
+       end
+   end
 end
