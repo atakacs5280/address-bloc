@@ -110,7 +110,6 @@ def check_entry(entry, expected_name, expected_number, expected_email)
       entry_five = book.entries[4]
       check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
       end
-
     end
 
     describe "importing from entries_2.csv" do
