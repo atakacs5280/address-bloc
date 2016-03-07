@@ -1,4 +1,4 @@
-require_relative '../models/address_book'
+require_relative '../models/address_book.rb'
 
  RSpec.describe AddressBook do
 let(:book) { AddressBook.new }
@@ -7,7 +7,8 @@ def check_entry(entry, expected_name, expected_number, expected_email)
   expect(entry.name).to eq expected_name
   expect(entry.phone_number).to eq expected_number
   expect(entry.email).to eq expected_email
-end
+  end
+
 
 
    describe "attributes" do
@@ -41,14 +42,16 @@ end
        expect(book.entry.size).to_eq 1
        expect(book.entry.first.name).to_eq ("Alex Takacs")
      end
-   
+  end
+
+
 
 
 
    describe "#add_entry" do
      it "adds only one entry to the address book" do
        book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
-       expect(book.entries.size).to eq(1)
+       expect(book.entries.size).to eq 1
      end
 
 
@@ -63,6 +66,7 @@ end
 
    end
 
+
       describe "#import_from_csv" do
         it "imports the correct number of entries" do
           book.import_from_csv("entries.csv")
@@ -75,7 +79,7 @@ end
            book.import_from_csv("entries.csv")
            # Check the first entry
            entry_one = book.entries[0]
-           check_entry(entry_one, "Bill", "555-555-4854", "bill@blocmail.com"
+           check_entry(entry_one, "Bill", "555-555-4854", "bill@blocmail.com")
           end
 
            it "imports the 2nd entry" do
@@ -105,6 +109,14 @@ end
   # Check the fifth entry
       entry_five = book.entries[4]
       check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
+      end
     end
+
+    describe "importing from entries_2.csv" do
+      it "imports number of entries"
+      book.import_from_csv("entries_2.csv")
+      expect(book_size).to eq 3
+    end 
+
   end
 end
