@@ -8,6 +8,10 @@ class AddressBook
     @entries = []
   end
 
+  def nuke
+    @entries = []
+  end
+
 
   def add_entry(name, phone_number, email)
     index = 0
@@ -51,13 +55,13 @@ class AddressBook
            lower = 0
            upper = entries.length - 1
 
-      # #2
+
           while lower <= upper
-      # #3
+
             mid = (lower + upper) / 2
             mid_name = entries[mid].name
 
-      # #4
+
             if name == mid_name
               return entries[mid]
             elsif name < mid_name

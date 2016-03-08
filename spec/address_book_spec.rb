@@ -9,6 +9,17 @@ def check_entry(entry, expected_name, expected_number, expected_email)
   expect(entry.email).to eq expected_email
   end
 
+  describe "#nuke" do
+    it "deletes all entries" do
+      book.add_entry('Alex Takacs', '303.868.1245', 'alex@alex.com')
+      book.add_entry('Alex Takacs', '303.868.1245', 'alex@alex.com')
+      book.add_entry('Alex Takacs', '303.868.1245', 'alex@alex.com')
+
+      book.nuke
+      expect(book.entries.size).to eq 0
+    end
+  end
+
 
 
    describe "attributes" do
